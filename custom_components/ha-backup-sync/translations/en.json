@@ -1,0 +1,40 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Backup Sync",
+        "description": "Creates the sensors that the Backup Sync add-on fills with status and progress information. No further configuration is needed."
+      }
+    },
+    "abort": {
+      "already_configured": "Backup Sync is already set up."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "status": {
+        "name": "Status",
+        "state": {
+          "idle": "Idle",
+          "starting": "Starting",
+          "verifying": "Verifying existing data",
+          "uploading": "Uploading",
+          "retrying": "Waiting to retry",
+          "pruning": "Cleaning up old backups",
+          "error": "Error",
+          "interrupted": "Interrupted",
+          "stale": "No signal from add-on"
+        }
+      },
+      "progress": { "name": "Progress" },
+      "bytes_done": { "name": "Uploaded" },
+      "bytes_total": { "name": "Size" },
+      "speed": { "name": "Speed" },
+      "eta": { "name": "ETA" },
+      "current_file": { "name": "File" },
+      "last_success": { "name": "Last success" },
+      "last_error": { "name": "Last error" },
+      "remote_backups": { "name": "Backups on server" }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+name: Backup Sync
+version: "0.1.0"
+slug: backup_sync
+description: Resumable rsync/SSH upload of Home Assistant backups with retention and progress reporting
+url: https:/github.com/1cekid/ha-backup-sync
+arch:
+  - aarch64
+  - amd64
+init: false
+# The container only runs when started (e.g. by an automation) and stops by itself
+# once the upload and the retention step are finished.
+startup: once
+boot: manual
+# Needed to report progress to Home Assistant (event API via the Supervisor proxy)
+homeassistant_api: true
+map:
+  - backup:ro        # mounted at /backup
+  - addon_config:rw  # mounted at /config (SSH key, known_hosts)
+options:
+  host: ""
+  port: 22
+  user: ""
+  remote_path: /backups/homeassistant
+  keep_count: 7
+  file_pattern: "*.tar"
+  only_newest: true
+  stable_seconds: 60
+  max_attempts: 20
+  retry_delay: 60
+  bandwidth_limit_kbps: 0
+  report_to_homeassistant: true
+  report_interval: 15
+  log_level: info
+schema:
+  host: str
+  port: port
+  user: str
+  remote_path: str
+  keep_count: int(1,365)
+  file_pattern: str
+  only_newest: bool
+  stable_seconds: int(0,3600)
+  max_attempts: int(1,1000)
+  retry_delay: int(5,3600)
+  bandwidth_limit_kbps: int(0,)
+  report_to_homeassistant: bool
+  report_interval: int(5,300)
+  log_level: list(trace|debug|info|notice|warning|error|fatal)

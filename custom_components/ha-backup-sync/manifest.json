@@ -1,0 +1,13 @@
+{
+  "domain": "backup_sync",
+  "name": "Backup Sync",
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/1cekid/hw-backup-sync",
+  "integration_type": "service",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/1cekid/hw-backup-sync/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}
