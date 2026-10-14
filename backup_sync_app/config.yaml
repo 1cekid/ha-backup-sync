@@ -2,7 +2,7 @@ name: Backup Sync
 version: "0.1.0"
 slug: backup_sync
 description: Resumable rsync/SSH upload of Home Assistant backups with retention and progress reporting
-url: https:/github.com/1cekid/ha-backup-sync
+url: https://github.com/1cekid/ha-backup-sync
 arch:
   - aarch64
   - amd64
